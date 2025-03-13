@@ -114,19 +114,69 @@ Next, we will install osTicket. From the “osTicket-Installation-Files” folde
 Within “c:\inetpub\wwwroot”, Rename “upload” to “osTicket”
 </p>
 <br/>
+<p>
+ <img width="1440" alt="Screenshot 2025-03-12 at 6 58 32 PM" src="https://github.com/user-attachments/assets/9b3eb21b-dfb6-4712-a5f8-a9310f3e9039" />
+</p>
+<p>
+ After renaming the folder to osTicket. You can reload IIS. Once it has reloaded, you can click on the "sites" folder, then "Default Web store" then "osTicket" folder. After that, on the right hand side, you should see under "Manage folder" you can click on "Browse *.80(http)". Once you click this, you should see the photo above, which will let you know that you installed osTicket correctly. 
+</p>
+<br/>
+<p>
+ <img width="648" alt="Screenshot 2025-03-12 at 7 04 21 PM" src="https://github.com/user-attachments/assets/5354e5b8-b7e1-46f4-afdc-c80ab3baad99" />
+ <img width="635" alt="Screenshot 2025-03-12 at 7 05 06 PM" src="https://github.com/user-attachments/assets/c915eb05-fb00-4eaf-8baf-f6ef4fcaf620" />
+</p>
+<p>
+ Next, we need to make additional configurations in IIS so that osTicket can run smoothly. First, go back into IIS and access the PHP manager within the osTicket folder in go to "PHP Extensions". Click on "enable or disable and extension". We will need to enable php_imap.dll , php_intl.dll , and php_opcache.dll . Then reload the IIS and view the changes in osTicket. 
+ <br/>
+ <p>
+  <img width="542" alt="Screenshot 2025-03-12 at 7 25 19 PM" src="https://github.com/user-attachments/assets/4ccdd7a1-114b-4d5a-adec-751396dbcf5d" />
+  <img width="375" alt="Screenshot 2025-03-12 at 7 26 05 PM" src="https://github.com/user-attachments/assets/79aefa63-01c1-489f-871c-4b4a2df4d9bb" />
+  <img width="521" alt="Screenshot 2025-03-12 at 7 24 58 PM" src="https://github.com/user-attachments/assets/9949d1d5-bf76-42fb-943f-6276421c2b84" />
+  <img width="315" alt="Screenshot 2025-03-12 at 7 25 07 PM" src="https://github.com/user-attachments/assets/0c2b30d5-dfea-4130-9aee-fe87444e62e9" />
+ </p>
+ <p>
+  Next, we need to rename the "ost-sampleconfig.php" file to "ost-config.php". To do this, go to the osTicket folder that we installed on the "wwwroot" folder that is on the C: drive. Open the osTicket folder, click on the "include" folder, find the "ost-config.php" file and rename it. 
+ </p>
+ <br/>
+ <p>
+  <img width="374" alt="Screenshot 2025-03-12 at 7 26 23 PM" src="https://github.com/user-attachments/assets/c4daf71d-5430-41d0-ab31-31d968aabaa5" />
+  <img width="785" alt="Screenshot 2025-03-12 at 7 26 40 PM" src="https://github.com/user-attachments/assets/4063e7c2-de98-452c-a67d-685524a23e0e" />
+  <img width="728" alt="Screenshot 2025-03-12 at 7 28 06 PM" src="https://github.com/user-attachments/assets/db6d9ec5-6586-40d1-8852-d0671bc78908" />
+  <img width="1440" alt="Screenshot 2025-03-12 at 7 28 26 PM" src="https://github.com/user-attachments/assets/292038f5-0c59-436c-a41a-462b751aa5c7" />
+ </p>
+ <p>
+  Now, we need to assign permissions to the ost-config file. To do this, right-click on the file and go to "Properties". Then, click on "Security", then "Advanced", we can "disable inheritance" this will remove any defaulted permissions. Once that is done, click "select a principal" and type in "everyone" this will proper access to osTicket. Go ahead and apply these changes. 
+ </p>
+</p>
 <p><img width="624" alt="Screenshot 2025-03-03 at 10 49 31 AM" src="https://github.com/user-attachments/assets/ffde316e-a3d4-401e-ba66-ecb19ac8de8f" />
 </p>
-<p><img width="608" alt="Screenshot 2025-03-03 at 10 52 57 AM" src="https://github.com/user-attachments/assets/264d6738-54d0-490e-b73c-e53e215e0271" />
+</p>
+Now, we can reload our osTicket on our browse and complete the basic set up for the help desk user. 
 </p>
 <p>
-  Here, we are setting up the mySQL database that will be needed for our ticketing system. It is important to remember the log in information that we would have set up earlier in the insall. 
-</p>
-
-<br />
-
-<p><img width="1440" alt="Screenshot 2025-03-01 at 2 42 10 PM" src="https://github.com/user-attachments/assets/3e363955-49bc-4928-9d19-84035a4c5d06" />
+ <img width="697" alt="Screenshot 2025-03-12 at 7 49 41 PM" src="https://github.com/user-attachments/assets/3483fde8-7525-4881-a37d-a51554b4d78b" />
+ <img width="608" alt="Screenshot 2025-03-03 at 10 52 57 AM" src="https://github.com/user-attachments/assets/264d6738-54d0-490e-b73c-e53e215e0271" />
 </p>
 <p>
-  After getting all files downloaded and configured, we are able to run osTicket. There are still a few extensions that we will configure through IIS and PHP Manager. 
+Next, we will go back to the osTicket downloads that we saved to our desktop, and download and run HeidiSQL. This will house our database on the back end. We will use the username and password of 'root' that we set up previously.
 </p>
 <br>
+<p>
+ <img width="592" alt="Screenshot 2025-03-12 at 7 52 07 PM" src="https://github.com/user-attachments/assets/e6edf9f8-ca3a-4b21-bb73-ce971a5a2ba5" />
+</p>
+<p>
+ In HeidiSQL, we will create a database named osTicket. To do this, click on the icon to the left of the text that says "Unnamed" and hit "Create new". Name this osTicket. This should connect our database. 
+</p>
+<p>
+ <img width="1121" alt="Screenshot 2025-03-12 at 7 57 54 PM" src="https://github.com/user-attachments/assets/0f0a58b4-d35b-42af-bfbf-15ca2078c478" />
+</p>
+<p>
+ Next, we can input our information in the "mySQL" portion of the basic configuration in the osTicket browser. in the "mySQL database" box you can fill it in as osTicket, the use 'root' for the username and password. Then click "Install Now".
+</p>
+<br/>
+<p>
+ <img width="1440" alt="Screenshot 2025-03-12 at 8 03 19 PM" src="https://github.com/user-attachments/assets/411fc8ea-5115-48cc-a8d1-bc55d9739790" />
+</p>
+<p>
+ Congrats! You should see this screen and your osTicket should be set up and ready to go!
+</p>
